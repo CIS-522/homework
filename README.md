@@ -30,6 +30,8 @@ Each week, we will release new homework to the original repository, or "upstream
 
 <img width="362" alt="image" src="https://user-images.githubusercontent.com/693511/212490788-423f6600-eebb-408f-a652-0dce2950279b.png">
 
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/693511/212491554-12412adf-82a4-4065-858a-e48907a7203c.png">
+
 (In other words, click this button to get the latest assignment!)
 
 You may choose to make your codebase private or public.
