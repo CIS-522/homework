@@ -24,7 +24,7 @@ class GradientDescentLinearRegression(LinearRegression):
     def fit(
         self, X: np.ndarray, y: np.ndarray, lr: float = 0.01, epochs: int = 1000
     ) -> None:
-        ...
+        raise NotImplementedError()
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """
@@ -37,4 +37,4 @@ class GradientDescentLinearRegression(LinearRegression):
             np.ndarray: The predicted output.
 
         """
-        ...
+        raise NotImplementedError()

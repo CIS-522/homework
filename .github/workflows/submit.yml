@@ -16,10 +16,13 @@ jobs:
             - name: Install dependencies
               run: |
                   python -m pip install --upgrade pip
-                  pip install requests
+                  pip install requests pytest black
+            - name: Test
+              run: python -m pytest
+            - name: Lint
+              run: python -m black --check .
             - name: Submit
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   CIS522_TOKEN: ${{ secrets.CIS522_TOKEN }}
-              run: |
-                  python scripts/submit.py
+              run: python scripts/submit.py

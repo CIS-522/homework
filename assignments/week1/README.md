@@ -34,9 +34,17 @@ class LinearRegression:
 
 You may add any other methods you like to help you implement the model. As a rule of thumb, "private" methods in Python classes should usually start with an underscore (e.g. `_private_method()`).
 
+### Gradient-descent based linear regression
+
+Once you have a working linear regression model, you can now implement a gradient-descent based linear regression model. See how the performance characteristics of the two models differ, and how the gradient-descent based model training-time compares to the closed-form solution.
+
 ### Files you're allowed to edit
 
 -   `model.py`
+
+### Submission
+
+Update `submission.json` with your team information (Assignment Name is already set; you can change everything else). Push your code to GitHub to submit.
 
 ## Running the Code
 
@@ -56,4 +64,4 @@ This is a course on deep learning, and so you are expected to understand the alg
 -   If you copy code from the internet, you must attribute the source. Note that not all code online is licensed for reuse, and you must respect the license of any code you use. (Pro-tip: StackOverflow answers are _all_ licensed for reuse.)
 -   If you use an AI assistant to generate code, you must attribute the model.
 
-All attribution should be included in a file called `ATTRIBUTION.md` in the root of this week's assignment (i.e., `assignments/weekX/ATTRIBUTION.md`). Failure to correctly attribute code will be considered plagiarism, and will be handled according to the University of Pennsylvania's policy on academic integrity.
+All attribution should be included in the submission metadata in the root of this week's assignment (i.e., `assignments/weekX/submission.json`). Failure to correctly attribute code will be considered plagiarism, and will be handled according to the University of Pennsylvania's policy on academic integrity.
