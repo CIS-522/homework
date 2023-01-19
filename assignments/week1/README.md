@@ -1,5 +1,7 @@
 # Welcome to CIS 522 Deep Learning!
 
+> **Note** Due January 31st before midnight in your timezone
+
 This is the first assignment for the course. It is designed to help you get familiar with the course environment and the tools we will be using.
 
 Most of the weeks in this class will work the same way: we'll give you a set of Python files in a directory like this one (`assignments/week1`), and instructions for how to modify them to meet the project needs.
