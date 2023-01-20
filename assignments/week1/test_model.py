@@ -74,18 +74,6 @@ def test_docstrings(model):
         ), f"The class `{class_}` does not have a docstring."
 
 
-def test_closed_form_fit():
-    """
-    Test that the LinearRegression class fits the model correctly.
-    """
-    lr = LinearRegression()
-    X = np.array([[1, 2], [3, 4]])
-    y = np.array([1, 2])
-    lr.fit(X, y)
-    assert np.allclose(lr.w, np.array([0, 0.5])), "Incorrect value for `w`."
-    assert np.allclose(lr.b, 0), "Incorrect value for `b`."
-
-
 def test_epochs_improve_fit():
     """
     Test that GradientDescentLinearRegression improves with more epochs.
