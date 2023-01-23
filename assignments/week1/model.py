@@ -2,18 +2,35 @@ import numpy as np
 
 
 class LinearRegression:
+    """
+    TODO
+    """
 
     w: np.ndarray
     b: float
 
     def __init__(self):
-        raise NotImplementedError()
+        self.w = None
+        self.b = None
 
-    def fit(self, X, y):
-        raise NotImplementedError()
+    def fit(self, X: np.array, y: np.array) -> None:
+        """
+        Fit the model to the data.
+        """
+        # FIXME: make sure annotations are correct: I think it's NDArray, and return should be self (LinearRegression)
+        X = np.c_[np.ones(X.shape[0]), X]
+        XX_inv = np.linalg.pinv(X.T @ X)
+        w = XX_inv @ X.T @ y
+        self.w = w[1:]
+        self.b = self.w[0]
 
-    def predict(self, X):
-        raise NotImplementedError()
+    def predict(self, X: np.array) -> np.array:
+        """
+        Predict the output for the given input.
+        """
+        # FIXME: make sure annotations are correct: I think it's NDArray, and return should be self (LinearRegression)
+        X = np.c_[np.ones(X.shape[0]), X]
+        return X @ self.w + self.b
 
 
 class GradientDescentLinearRegression(LinearRegression):
