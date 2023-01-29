@@ -70,7 +70,7 @@ def test_fit_returns_self(model):
     # y = 1 * x_0 + 2 * x_1 + 3
     y = np.dot(X, np.array([1, 2])) + 3
     lr = model()
-    y_hat = lr.fit(X, y).predict(X)
+    lr.fit(X, y).predict(X)
 
 
 @model_parametrize
