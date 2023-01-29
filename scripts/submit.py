@@ -7,6 +7,7 @@ You do not need to change this file.
 
 import os
 import json
+import sys
 import requests
 import glob
 
@@ -163,7 +164,12 @@ def submit_all_open_assignments():
         }
 
         # Upload the assignment
-        print(submit_tarball(assignment_headers, tarball_path).json())
+        response = submit_tarball(assignment_headers, tarball_path)
+        response.raise_for_status()
+        if "error" in response.json():
+            print(response.json()["error"])
+            sys.exit(1)
+        print(response.json())
 
 
 def main():
