@@ -1,3 +1,9 @@
+"""
+This modules has been implemented in PyCharm using Github Copilot, a tool that
+I usually employ to write code. I used Github Copilot to write simple code, and
+never to solve the assigments. I left several comments explaining all the steps.
+"""
+
 import numpy as np
 
 
@@ -33,7 +39,7 @@ class LinearRegression:
 
     def fit(self, X: np.ndarray, y: np.ndarray) -> "LinearRegression":
         """
-        Fit the model to the data. Here the formula to obtain the weights is
+        Fit the model to the data using the closed form/analytical solution:
 
             w = (X^T @ X)^-1 @ X^T @ y
 
@@ -60,6 +66,15 @@ class LinearRegression:
         # return self to allow chaining (such as model.fit(X, y).predict(X))
         return self
 
+    @staticmethod
+    def _predict(X: np.ndarray, w: np.ndarray) -> np.ndarray:
+        """
+        Predict the output for the given input and weights. It assumes that the
+        input matrix X has a column of ones as the first column, and that the
+        bias term is the first element of the weights vector.
+        """
+        return X @ w
+
     def predict(self, X: np.ndarray) -> np.array:
         """
         Predict the output for the given input.
@@ -69,7 +84,7 @@ class LinearRegression:
             raise ValueError("Model has not been fit yet.")
 
         # return y_hat (the predicted output given X)
-        return X @ self.w + self.b
+        return self._predict(LinearRegression._add_constant(X), np.r_[self.b, self.w])
 
 
 class GradientDescentLinearRegression(LinearRegression):
@@ -77,20 +92,39 @@ class GradientDescentLinearRegression(LinearRegression):
     A linear regression model that uses gradient descent to fit the model.
     """
 
+    def __init__(self):
+        super(GradientDescentLinearRegression, self).__init__()
+
     def fit(
         self, X: np.ndarray, y: np.ndarray, lr: float = 0.01, epochs: int = 1000
-    ) -> None:
-        raise NotImplementedError()
-
-    def predict(self, X: np.ndarray) -> np.ndarray:
+    ) -> "GradientDescentLinearRegression":
         """
-        Predict the output for the given input.
+        Fit the model to the data using gradient descent.
 
-        Arguments:
-            X (np.ndarray): The input data.
+        Args:
+            X: The training data with shape (n_samples, n_features).
+            y: The labels with shape (n_samples,).
+            lr: The learning rate.
+            epochs: The number of epochs.
 
         Returns:
-            np.ndarray: The predicted output.
-
+            The same instance (GradientDescentLinearRegression) with the fitted
+            parameters.
         """
-        raise NotImplementedError()
+        X = LinearRegression._add_constant(X)
+
+        w_ = np.random.normal(0, 0.01, size=X.shape[1])
+
+        for i in range(epochs):
+            # get the predicted output
+            y_hat = self._predict(X, w_)
+
+            # compute the gradient of the loss function
+            grad = 2 * (y_hat - y) @ X
+
+            # update the weights
+            w_ -= lr * grad
+
+        self.w, self.b = LinearRegression._split_w_and_b(w_)
+
+        return self
