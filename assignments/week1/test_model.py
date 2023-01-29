@@ -59,6 +59,21 @@ def test_small_linear_and_noisy_data(model):
 
 
 @model_parametrize
+def test_fit_returns_self(model):
+    """
+    Test that the fit method returns self.
+    """
+    np.random.seed(0)
+
+    # linear data, example from sklearn.LinearRegression
+    X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
+    # y = 1 * x_0 + 2 * x_1 + 3
+    y = np.dot(X, np.array([1, 2])) + 3
+    lr = model()
+    y_hat = lr.fit(X, y).predict(X)
+
+
+@model_parametrize
 def test_has_correct_attributes(model):
     """
     Test that the LinearRegression class has the correct attributes.
