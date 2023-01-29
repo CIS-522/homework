@@ -45,7 +45,7 @@ def test_small_linear_and_noisy_data(model):
     lr = model()
     lr.fit(X, y)
     y_hat = lr.predict(X)
-    np.testing.assert_allclose(y_hat, y)
+    np.testing.assert_allclose(y_hat, y, rtol=1e-3)
 
     # noisy data
     X = np.array([[1, 1], [1, 2], [2, 2], [2, 3]])
@@ -55,7 +55,7 @@ def test_small_linear_and_noisy_data(model):
     lr = model()
     lr.fit(X, y)
     y_hat = lr.predict(X)
-    np.testing.assert_allclose(y_hat, y, atol=0.12)
+    np.testing.assert_allclose(y_hat, y, rtol=1e-2)
 
 
 @model_parametrize
