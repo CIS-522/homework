@@ -17,6 +17,7 @@ Once you have passed all unit tests, your code will be automatically submitted t
 ## Assignments
 
 1. [Linear Regression and Gradient Descent](assignments/week1/README.md). Write a linear regression model from scratch, and see how gradient descent compares to the closed form solution.
+2. [Multilayer Perceptrons](assignments/week3). 
 
 ## Getting Started
 
