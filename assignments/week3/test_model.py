@@ -1,4 +1,3 @@
-import pytest
 import inspect
 from model import MLP
 
