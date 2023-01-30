@@ -112,8 +112,7 @@ class GradientDescentLinearRegression(LinearRegression):
             parameters.
         """
         X = LinearRegression._add_constant(X)
-
-        w_ = np.random.normal(0, 0.01, size=X.shape[1])
+        w_ = np.zeros(X.shape[1])
 
         for i in range(epochs):
             # get the predicted output
