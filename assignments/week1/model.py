@@ -92,7 +92,8 @@ class GradientDescentLinearRegression(LinearRegression):
     A linear regression model that uses gradient descent to fit the model.
 
     Args:
-        adagrad: Whether to use Adagrad or not.
+        adagrad: Whether to use Adagrad or not. See below for details on my
+            tests using main.py (California housing data).
     """
 
     def __init__(self, adagrad: bool = True):
@@ -129,6 +130,15 @@ class GradientDescentLinearRegression(LinearRegression):
 
             if self.adagrad:
                 # here I use an adaptive learning rate with AdaGrad.
+                # I found that it works better for the dataset in main.py
+                # (California housing) than onlly using a fixed learning rate.
+                # The best fixed learning rate was around lr=1e-7 with mse~1.44
+                # (greater than this produced instabilities in the convergence).
+                # On the other hand, using adagrad=True, it allowed to use
+                # larger learning rates (around lr=0.02) and get a final mse
+                # of 0.85. This means that AdaGrad allows to make larger updates
+                # on the parameter at the beginning, and adaptively adjust the
+                # learning rate to smaller values as the model converges.
                 s += grad**2
                 w_ -= lr * grad / (np.sqrt(s) + 1e-8)
 
