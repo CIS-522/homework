@@ -90,10 +90,14 @@ class LinearRegression:
 class GradientDescentLinearRegression(LinearRegression):
     """
     A linear regression model that uses gradient descent to fit the model.
+
+    Args:
+        adagrad: Whether to use Adagrad or not.
     """
 
-    def __init__(self):
+    def __init__(self, adagrad: bool = True):
         super(GradientDescentLinearRegression, self).__init__()
+        self.adagrad = adagrad
 
     def fit(
         self, X: np.ndarray, y: np.ndarray, lr: float = 0.01, epochs: int = 1000
@@ -113,16 +117,24 @@ class GradientDescentLinearRegression(LinearRegression):
         """
         X = LinearRegression._add_constant(X)
         w_ = np.zeros(X.shape[1])
+        s = np.zeros(X.shape[1])
 
         for i in range(epochs):
             # get the predicted output
             y_hat = self._predict(X, w_)
+            errors = y_hat - y
 
             # compute the gradient of the loss function
-            grad = 2 * (y_hat - y) @ X
+            grad = (2 / X.shape[0]) * (errors @ X)
 
-            # update the weights
-            w_ -= lr * grad
+            if self.adagrad:
+                # here I use an adaptive learning rate with AdaGrad.
+                s += grad**2
+                w_ -= lr * grad / (np.sqrt(s) + 1e-8)
+
+            else:
+                # update the weights
+                w_ -= lr * grad
 
         self.w, self.b = LinearRegression._split_w_and_b(w_)
 
