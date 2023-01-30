@@ -100,7 +100,7 @@ class GradientDescentLinearRegression(LinearRegression):
         self.adagrad = adagrad
 
     def fit(
-        self, X: np.ndarray, y: np.ndarray, lr: float = 0.01, epochs: int = 1000
+        self, X: np.ndarray, y: np.ndarray, lr: float = 0.02, epochs: int = 1000
     ) -> "GradientDescentLinearRegression":
         """
         Fit the model to the data using gradient descent.
