@@ -12,12 +12,12 @@ class LinearRegression:
 
     def fit(self, X, y):
         X_new = np.hstack((np.ones((X.shape[0], 1)), X))
-        out = np.linalg.inv(X_new.T@X_new)@X_new.T@y
+        out = np.linalg.inv(X_new.T @ X_new) @ X_new.T @ y
         self.w = out[1:]
         self.b = out[0][0]
 
     def predict(self, X):
-        return self.w@X.T + self.b
+        return self.w @ X.T + self.b
 
 
 class GradientDescentLinearRegression(LinearRegression):
@@ -30,7 +30,6 @@ class GradientDescentLinearRegression(LinearRegression):
     ) -> None:
         # for epoch in epochs:
         raise NotImplementedError()
-
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """
