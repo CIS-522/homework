@@ -7,13 +7,21 @@ class LinearRegression:
     b: float
 
     def __init__(self):
-        raise NotImplementedError()
+        # get the random initial value of w and b
+        self.w = np.random(X.shape[1])
+        self.b = np.random(1)
+        pass
 
     def fit(self, X, y):
-        raise NotImplementedError()
+        # add one column to front of X with value of 1
+        X = np.hstack((np.ones((X.shape[0], 1)), X))
+
+        # calculate the W that contain b and w
+        self.W = np.linalg.inv(X.T @ X) @ (X.T @ y)
 
     def predict(self, X):
-        raise NotImplementedError()
+        X = np.hstack((np.ones((X.shape[0], 1)), X))
+        return X @ self.W 
 
 
 class GradientDescentLinearRegression(LinearRegression):
@@ -24,7 +32,16 @@ class GradientDescentLinearRegression(LinearRegression):
     def fit(
         self, X: np.ndarray, y: np.ndarray, lr: float = 0.01, epochs: int = 1000
     ) -> None:
-        raise NotImplementedError()
+        m,n = X.shape
+        
+        for i in epochs:
+            # get y_hat
+            y_hat = w @ X + b
+            
+            # dloss/dw or db = 2*(1/m)(y_hat - y)(y_hat - y)'
+            self.__annotations__
+            w -= lr * 2 * (1/m) * (X.T @ (y_hat - y))
+            b -= lr * 2 * (1/m) * (y_hat - y)
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """
@@ -37,4 +54,4 @@ class GradientDescentLinearRegression(LinearRegression):
             np.ndarray: The predicted output.
 
         """
-        raise NotImplementedError()
+        return (self.w * X + self.b)
