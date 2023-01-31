@@ -29,6 +29,7 @@ class GradientDescentLinearRegression(LinearRegression):
         self, X: np.ndarray, y: np.ndarray, lr: float = 0.01, epochs: int = 1000
     ) -> None:
         # for epoch in epochs:
+        raise NotImplementedError()
 
 
     def predict(self, X: np.ndarray) -> np.ndarray:
