@@ -1,0 +1,14 @@
+name: cis522-hw-week3
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - cpuonly=2.*=0
+  - ipython=8.*
+  - pip
+  - python=3.10.*
+  - pytorch=1.13.*
+  - torchaudio=0.13.*
+  - torchvision=0.2.*
+  - tqdm=4.*
