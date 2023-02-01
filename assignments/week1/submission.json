@@ -2,12 +2,12 @@
     "assignment_name": "Assignment 1",
     "contributors": [
         {
-            "name": "Jordan Matelsky",
-            "pennkey": "matelsky"
+            "name": "Guo Cheng",
+            "pennkey": "guocheng"
         }
     ],
     "sources": [
-        "https://example.com",
+        "https://www.geeksforgeeks.org/linear-regression-implementation-from-scratch-using-python/",
         "Conversations with TA (include TA's name)",
         "LLM (include information about the LLM and how it was used)"
     ]
