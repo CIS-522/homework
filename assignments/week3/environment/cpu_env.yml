@@ -6,6 +6,7 @@ channels:
 dependencies:
   - cpuonly=2.*=0
   - ipython=8.*
+  - numpy=1.23.*
   - pip
   - python=3.10.*
   - pytorch=1.13.*
