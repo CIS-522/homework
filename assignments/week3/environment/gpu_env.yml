@@ -8,6 +8,7 @@ dependencies:
   - numpy=1.23.*
   - pip
   - python=3.10.*
+  - pytest=7.*
   - pytorch=1.13.*
   - pytorch-cuda=11.7
   - torchaudio=0.13.*
