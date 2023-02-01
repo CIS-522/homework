@@ -1,0 +1,15 @@
+name: cis522-hw-week3
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - ipython=8.*
+  - numpy=1.23.*
+  - pip
+  - python=3.10.*
+  - pytorch=1.13.*
+  - pytorch-cuda=11.7
+  - torchaudio=0.13.*
+  - torchvision=0.14.*
+  - tqdm=4.*
