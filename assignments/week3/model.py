@@ -3,7 +3,11 @@ from typing import Callable
 import torch
 
 
-class MLP:
+class MLP(torch.nn.Module):
+    """
+    An implementation of a multi-layer perceptron (MLP) for CIS-522, Homework week 3.
+    """
+
     def __init__(
         self,
         input_size: int,
@@ -23,9 +27,9 @@ class MLP:
             activation: The activation function to use in the hidden layer.
             initializer: The initializer to use for the weights.
         """
-        ...
+        super(MLP, self).__init__()
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> None:
         """
         Forward pass of the network.
 
