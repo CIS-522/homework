@@ -11,9 +11,8 @@ class MLP(torch.nn.Module):
     def __init__(
         self,
         input_size: int,
-        hidden_size: int,
+        hidden_units: int | list[int],
         num_classes: int,
-        hidden_count: int = 1,
         activation: Callable = torch.nn.ReLU,
         initializer: Callable = torch.nn.init.ones_,
     ) -> None:
@@ -29,6 +28,21 @@ class MLP(torch.nn.Module):
         """
         super(MLP, self).__init__()
 
+        ## TODO: use initializer
+
+        self.activation = activation()
+
+        if isinstance(hidden_units, int):
+            hidden_units = [hidden_units]
+
+        layers_units = [input_size] + hidden_units + [num_classes]
+
+        self.layers = torch.nn.ModuleList()
+        current_input_size = input_size
+        for layer_n_units in layers_units:
+            self.layers.append(torch.nn.Linear(current_input_size, layer_n_units))
+            current_input_size = layer_n_units
+
     def forward(self, x: torch.Tensor) -> None:
         """
         Forward pass of the network.
@@ -39,4 +53,10 @@ class MLP(torch.nn.Module):
         Returns:
             The output of the network.
         """
-        ...
+        x = x.view(x.shape[0], -1)
+
+        for layer in self.layers:
+            # TODO: different activations per layer (or per neuron?)
+            x = self.activation(layer(x))
+
+        return x
