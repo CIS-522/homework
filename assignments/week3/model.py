@@ -40,7 +40,12 @@ class MLP(torch.nn.Module):
         self.layers = torch.nn.ModuleList()
         current_input_size = input_size
         for layer_n_units in layers_units:
-            self.layers.append(torch.nn.Linear(current_input_size, layer_n_units))
+            layer = torch.nn.Linear(current_input_size, layer_n_units)
+
+            if initializer is not None:
+                initializer(layer.weight)
+
+            self.layers.append(layer)
             current_input_size = layer_n_units
 
     def forward(self, x: torch.Tensor) -> None:

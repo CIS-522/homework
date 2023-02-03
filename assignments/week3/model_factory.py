@@ -15,4 +15,6 @@ def create_model(input_dim: int, output_dim: int) -> MLP:
         MLP: The created model.
 
     """
-    return MLP(input_dim, [32, 5], output_dim, torch.nn.ReLU, torch.nn.init.ones_)
+    return MLP(
+        input_dim, [32, 5], output_dim, torch.nn.ReLU, torch.nn.init.xavier_uniform_
+    )
