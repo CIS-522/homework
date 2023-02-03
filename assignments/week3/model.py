@@ -35,12 +35,15 @@ class MLP(torch.nn.Module):
             assert len(activation) == len(
                 hidden_units
             ), "Number of activation functions must match number of hidden layers"
-            
+
             self.activation = [a() for a in activation]
         else:
-            self.activation = [activation() for i in hidden_units]
+            self.activation = [activation() for _ in hidden_units]
 
-        layers_units = [input_size] + hidden_units + [num_classes]
+        # add a dummy activation function for the last layer
+        self.activation.append(torch.nn.Identity())
+
+        layers_units = hidden_units + [num_classes]
 
         self.layers = torch.nn.ModuleList()
         current_input_size = input_size
@@ -52,6 +55,11 @@ class MLP(torch.nn.Module):
 
             self.layers.append(layer)
             current_input_size = layer_n_units
+
+        # sanity check
+        assert len(self.activation) == len(
+            self.layers
+        ), "Number of layers and activations must match"
 
     def forward(self, x: torch.Tensor) -> None:
         """
@@ -67,7 +75,6 @@ class MLP(torch.nn.Module):
         x = x.view(x.shape[0], -1)
 
         for layer, activ in zip(self.layers, self.activation):
-            # TODO: different activations per layer (or per neuron?)
             x = activ(layer(x))
 
         return x
