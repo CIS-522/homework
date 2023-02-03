@@ -1,5 +1,7 @@
 # Multilayer Perceptrons
 
+> **Due**: February 8 at 7 am EST
+
 Previously, we learned about why we need to use non-linear activation functions in neural networks. In this assignment, we will implement a multilayer perceptron (MLP) to classify images from the MNIST dataset. We will explore the effects of different activation functions, and explore initialization strategies for the weights.
 
 ## Your Project
@@ -70,6 +72,10 @@ Update `model_factory.py` to construct the best MLP you can create for the MNIST
 
 -   `model.py`
 -   `model_factory.py`
+
+### Performance
+
+You will be graded on the accuracy of your model on a holdout dataset; highest accuracy wins!
 
 ## Ethics and Plagiarism
 
