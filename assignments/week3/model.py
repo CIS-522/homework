@@ -1,7 +1,9 @@
+import torch
+import torch.nn.functional as F
 from typing import Callable
 
 
-class MLP:
+class MLP(torch.nn.Module):
     def __init__(
         self,
         input_size: int,
@@ -21,7 +23,15 @@ class MLP:
             activation: The activation function to use in the hidden layer.
             initializer: The initializer to use for the weights.
         """
-        ...
+        super(MLP, self).__init__()
+        self.fc1 = torch.nn.Linear(input_size, 512)
+        self.fc2 = torch.nn.Linear(512, 512)
+        self.fc3 = torch.nn.Linear(512, num_classes)
+        self.activation = activation
+        self.initializer = initializer
+        self.hidden_count = hidden_count
+        # dropout prevents overfitting of data
+        self.droput = torch.nn.Dropout(0.2)
 
     def forward(self, x):
         """
@@ -33,4 +43,13 @@ class MLP:
         Returns:
             The output of the network.
         """
-        ...
+        # x = self.initializer(x)
+        x = x.view(-1, 28 * 28)
+        x = F.relu(self.fc1(x))
+        x = self.droput(x)
+        for i in range(self.hidden_count):
+            x = F.relu(self.fc2(x))
+        x = self.droput(x)
+        x = self.fc3(x)
+        output = F.log_softmax(x, dim=1)
+        return output
