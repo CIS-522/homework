@@ -18,7 +18,7 @@ jobs:
                   python -m pip install --upgrade pip
                   pip install requests black
             - name: Lint
-              run: python -m black --check .
+              run: python -m black --diff --check . 
             - name: Submit
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -130,15 +130,17 @@ def submit_all_open_assignments():
     assignment_names = [assignment["name"] for assignment in assignments]
 
     # Get all week#/submission.json files
-    submission_jsons = glob.glob("assignments/week*/submission.json")
+    submission_jsons = glob.glob("assignments/*/submission.json")
 
     # For each submission.json file, check if the assignment is open
     for submission_json in submission_jsons:
         # Load the submission.json file
         meta = load_submission_json(submission_json)
+        print(f"Found {meta['assignment_name']} in {submission_json}...")
 
         # Check if the assignment is open
         if meta["assignment_name"] not in assignment_names:
+            print(f"Assignment {meta['assignment_name']} is not open.")
             continue
 
         print(f"Submitting {meta['assignment_name']}...")
