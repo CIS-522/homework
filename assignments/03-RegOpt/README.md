@@ -1,5 +1,9 @@
 # Optimization and Regularization
 
+| Deadline | Runner Timeout |
+|----------|----------------|
+| Feb 19 at 11:59pm EST | 5 minutes |
+
 This week, we learned how and why optimization works, and we saw that in certain circumstances, training a network can get "trapped" in a low-energy well in the loss landscape because the learning rate (the "step" size) is too small to get out of the well. Conversely, we also saw how too _large_ a learning rate can result in a network that never finds the low-energy wells in the first place, and therefore never achieves high performance.
 
 A solution to this problem is a learning-rate _scheduler_, which adjusts the learning rate during training. For your project this week, you will write your own learning rate scheduler and compete against your classmates.
