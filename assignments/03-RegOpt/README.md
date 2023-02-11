@@ -12,9 +12,9 @@ A solution to this problem is a learning-rate _scheduler_, which adjusts the lea
 
 You are given a complete implementation of a neural network in `model.py`. Your task is to implement a learning rate scheduler in `scheduler.py`. You will then train the network on the CIFAR-10 dataset, and compare your scheduler to the default scheduler.
 
-Edit the `scheduler.py` file to schedule the learning rate. You can use any method you like, but you must implement it yourself. (You may not simply import an existing learning rate scheduler from PyTorch, though you can of course reimplement an industry standard; don't forget to cite your sources!)
+Edit the `scheduler.py` file to schedule the learning rate. You can use any method you like, but you must implement it yourself. (You may not simply import an existing learning rate scheduler from PyTorch, though you can of course reimplement an industry standard; don't forget to cite your sources!) You may also change `config.py`.
 
-You must implement the `_LRScheduler` spec from the PyTorch library. In other words, your class should inherit from `torch.optim.lr_scheduler._LRScheduler`, and implement the `get_lr()` method. You can find the documentation for this class [here](https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate). See some example implementations [here](https://pytorch.org/docs/stable/_modules/torch/optim/lr_scheduler.html). (Advanced note: You MAY, but do not have to, implement `_get_closed_form_lr`.)
+Note that you must implement the `_LRScheduler` spec from the PyTorch library. In other words, your class should inherit from `torch.optim.lr_scheduler._LRScheduler`, and implement the `get_lr()` method. You can find the documentation for this class [here](https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate). See some example implementations [here](https://pytorch.org/docs/stable/_modules/torch/optim/lr_scheduler.html). (Advanced note: You MAY, but do not have to, implement `_get_closed_form_lr`.)
 
 You SHOULD leave the name `CustomLRScheduler` alone. (We will import this by name in other files.)
 
