@@ -37,6 +37,9 @@ Each week, we will release new homework to the original repository, or "upstream
 
 You may choose to make your codebase private or public.
 
+### Enable GitHub Actions
+Go to the "Actions" tab and click the green button to enable GitHub Actions. This allows our grading script to run!
+
 ### Create an account on the leaderboard
 
 To submit your code to the leaderboard, you will need to create an account. Create a new account at https://leaderboard.cis522.com and **set your username to your PennKey** (usually letters, not numbers. e.g., mine is `matelsky`.)
