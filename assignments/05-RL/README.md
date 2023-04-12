@@ -2,7 +2,7 @@
 
 | Deadline             | Runner Timeout | Leaderboard Metric        |
 | -------------------- | -------------- | ------------------------- |
-| May 1 at 11:59pm EST | 5 minutes      | Runtime (lower is better) |
+| April 23 at 11:59pm EST | 5 minutes      | Runtime (lower is better) |
 
 In pods, we learned about reinforcement learning, a loop of interacting with an environment and learning from the experience. In this assignment, we will implement a reinforcement learning agent that learns to play a Lunar Lander game.
 
