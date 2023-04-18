@@ -52,7 +52,7 @@ class Agent:
 
 -   `customagent.py`
 
-You will be trained on how long it takes your model to be trained (from scratch!) to solve a holdout RL task; note that while the action space and observation space may differ in dimension, you can assume that the datatypes of observation and action will be the same (i.e., no need to plan to continuous action spaces etc).
+You will be graded on how long it takes your model to be trained (from scratch!) to solve a holdout RL task; note that while the action space and observation space may differ in dimension, you can assume that the datatypes of observation and action will be the same (i.e., no need to plan to continuous action spaces etc).
 
 If you are performing well on the LunarLander in `main.py`, you can expect to perform well on our holdout scene!
 
